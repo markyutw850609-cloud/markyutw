@@ -1,0 +1,231 @@
+/* 全域設置：重置所有元素的內外距，避免瀏覽器預設值影響版面 */
+*{ 
+padding: 0;    /* 內距：元素內部與內容之間的距離（這裡清除預設值）*/
+margin: 0;     /* 外距：元素外部與其他元素之間的距離（這裡清除預設值*/
+}   
+
+/* 頁首色塊設定 */
+header {
+background-color: rgba(22, 22, 26, 0.8);   /* 頁首背景色（深灰偏黑） */
+height: 80px;                  /* 頁首高度 */
+width: 100%;                  /* 寬度佔滿整個畫面 */
+position: fixed;}
+
+/*頁首字體markyquik設定*/
+h1 {
+color: white;       /* 文字顏色：白色 */
+position: absolute;   /* 絕對定位：讓這個區塊可以自由放在畫面上，不受其他元素影響 */
+left: 100px;          /* 距離左邊 100px */
+top: 0;               /* 距離上方 0px */
+line-height: 80px;}   /* 行高：控制文字上下距離 (若行高等於容器高度，可讓單行文字在垂直方向看起來置中) */
+
+
+/* 頁首logo設定 */
+header img {          
+max-height: 40px;        /* 限制圖片最高 40px，保持比例縮放 */
+position: absolute;      /* 絕對定位：讓 logo 可以固定在指定位置 */
+margin: 1vw;            /* 外距 1vw（依螢幕寬度自動調整） */
+}
+
+
+/* 頁首列表設定 */
+header ul {
+position:absolute;    /* 絕對定位：讓列表能固定在頁首中指定位置 */       
+right: 5vw;           /* 與右邊距離 5vw（會隨螢幕寬度調整） */
+top: 0;               /* 與頁首頂端距離 0 */
+line-height: 80px;}   /* 行高：控制文字上下距離 (若行高等於容器高度，可讓單行文字在垂直方向看起來置中) */
+
+
+/* 頁首列表文字設定 */
+header li {
+display: inline;      /* 使元素以行內方式排列，橫向顯示，不會自動換行 */
+margin-right: 4vw;}   /* 與右邊保持視窗寬度4%的外距，會隨螢幕寬度自動縮放 */
+
+
+/* 頁首連結設定 */
+header a {
+color: white;         /* 文字顏色：白色 */
+text-decoration: none;  /* 移除超連結預設的底線 */
+}
+
+
+/* 當滑鼠接觸到頁首連結時的反應 */
+header a:hover {              /* :hover 是滑鼠懸停時的狀態，用來做互動效果 */
+text-decoration: underline;}  /* 滑鼠移過時顯示底線 */
+
+
+/* 「關於我」區塊設定 */
+.關於我 {
+background-color: #94a1b2;      /* 背景底色（淡灰藍）*/
+color: white;                   /* 文字顏色：白色 */  
+height: 95vh;                     /* 區塊高度佔視窗高度的 85% */
+background-image: url(image/碩哥家頂樓.jpg);  /* 背景圖片 */
+background-repeat: no-repeat;     /* 背景不重複 */
+background-size: cover;           /* 背景依比例放大，填滿整個區塊 */
+background-position: center;      /* 圖片置中顯示*/
+/* ---------------- Flex 排版設定 ---------------- */
+display: flex;                    /* 啟用彈性排版（flexbox）可讓子元素方便對齊與排列 */
+flex-direction: column;           /* 排列方向：column=垂直排列（由上往下）若設為 row=水平排列（由左到右）*/
+align-items: center;              /* 水平對齊：讓子元素在「橫向」置中 */
+justify-content: center;}         /* 垂直對齊：讓子元素在「縱向」置中
+                                     配合 flex-direction: column，這樣文字與圖片會在整個區塊中央 */
+
+
+/* 「關於我」區塊標題設定 */
+.關於我 h2 
+{font-size: 60px;}                /* 標題文字大小：60px（大字效果） */
+
+
+/* 「關於我」區塊內的段落設定 */
+.關於我 p
+{color: #fef7e6;                /* 文字顏色：淡米白，與背景形成柔和對比 */
+margin: 25px;}                    /* 外距：讓段落與周圍保持 25px 空間 */
+
+
+/* 「關於我」區塊內的"瞭解更多"按鈕設定 */
+.關於我 a {
+color: white;                   /* 文字顏色：白色 */
+text-decoration: none;            /* 移除連結底線 */
+border: 1px solid #acacac;      /* 外框線：1px 淺灰色邊框 */
+padding: 10px 20px;               /* 內距：上下10px、左右20px，讓按鈕有厚度感 */
+border-radius: 5px;}              /* 圓角：邊緣略為圓滑，讓按鈕更柔和 */
+
+
+/* 「左右銘」區塊設定 */
+.左右銘 {
+background-color: #16161a ;     /* 背景底色（淡灰藍）*/
+color: white;                   /* 文字顏色：白色 */ 
+height: 250px;                    /* 區塊高度為250px */
+/* ---------------- Flex 排版設定 ---------------- */
+display: flex;                    /* 啟用彈性排版（flexbox）可讓子元素方便對齊與排列 */
+align-items: center;              /* 水平對齊：讓子元素在「橫向」置中 */
+justify-content: center;          /* 垂直對齊：讓子元素在「縱向」置中 */
+font-size: 30px;                  /* 文字大小：20px */
+line-height: 1.8em;}              /* 行高：每行之間的距離為字高的1.8倍，使文字更好閱讀 */
+
+
+/* 「footer」區塊設定 */
+.footer {
+background-color: #000000 ;     /* 背景底色（黑色）*/
+color: #b7b7b7;                 /* 文字顏色：淺灰 */ 
+height: 60px;                     /* 區塊高度為60px */
+/* ---------------- Flex 排版設定 ---------------- */
+display: flex;                    /* 啟用彈性排版（flexbox）可讓子元素方便對齊與排列 */
+align-items: center;              /* 水平對齊：讓子元素在「橫向」置中 */
+justify-content: center;          /* 垂直對齊：讓子元素在「縱向」置中 */
+font-size: 14px;}                 /* 文字大小：14px */
+
+
+
+/* 「定期開台公告區域」區塊設定 */
+.定期開台公告區域 
+/* ---------------- Flex 排版設定 ---------------- */
+{display: flex;}
+
+
+.定期開台公告區域 {background-color: #3b3d41 ;}
+
+/* 「定期開台公告區域」圖片設定 */
+.定期開台公告區域 img {
+width: 50%;
+border-radius: 15px;}
+
+
+/* 「文字資訊」區塊設定 */
+.文字資訊 {
+width: 50%;
+background-color: #3b3d41 ;     /* 背景底色（淡灰藍）*/
+color: white;                   /* 文字顏色：白色 */
+display: flex;                    /* 啟用彈性排版（flexbox）可讓子元素方便對齊與排列 */
+flex-direction: column;           /* 排列方向：column=垂直排列（由上往下）若設為 row=水平排列（由左到右）*/
+align-items: center;              /* 水平對齊：讓子元素在「橫向」置中 */
+justify-content: center;}         /* 垂直對齊：讓子元素在「縱向」置中 */
+
+
+/* 「文字資訊」h2設定 */
+.文字資訊 h2 {
+font-size: 60px;
+margin-bottom: 30px;}
+
+
+/* 「文字資訊」p設定 */
+.文字資訊 p {
+text-align: center;
+line-height: 2em;}
+
+
+.產品圖片 {
+height: 700px;
+display: flex;
+flex-direction: row;               /* 排列方向：column=垂直排列（由上往下）若設為 row=水平排列（由左到右）*/
+background-color: #43434d ;     /* 背景底色（淡灰藍）*/
+justify-content: space-between;
+align-items: center;
+padding: 100px 40px 80px;}
+
+
+.產品圖片 div {
+width: 300px;
+text-align: center;}
+
+
+.產品圖片 img  {
+width: 100%;
+border-radius: 30px;
+height: 350px;           /* 固定高度 */
+
+object-fit: cover;}       /* 保持比例裁切，填滿容器 */
+
+.產品圖片 h3 {
+font-size: 20px;
+margin: 20px ;
+color: white;}
+
+
+.email聯絡我 {
+background-color: #171e2c;
+color: white;
+padding: 60px 0;
+display: flex;
+flex-direction: column;
+align-items: center;}
+
+.email聯絡我 p {
+margin-bottom: 20px;}
+
+
+.email聯絡我 input, .email聯絡我 button {
+background-color: transparent;
+color: white;
+border: 1px solid;
+padding: 10px;
+border-radius: 10px;}
+
+.email聯絡我 input {
+width: 200px;
+margin-right: 15px;}
+
+.email聯絡我 button {
+width: 80px;
+cursor: pointer;}
+
+input::placeholder {
+    color: #dddddd;}
+
+input:focus {
+    outline: none;
+border-color: purple;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

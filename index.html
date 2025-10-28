@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>   
+    <title>Mark Yu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+     <h1>MarkyQuikkk</h1>
+     <img src="./image/何偉畫的抽菸的我.jpg" alt="頭貼">
+      <nav>
+       <ul>
+         <li><a href="#">個人介紹</a></li>
+         <li><a href="#">我的作品</a></li>
+         <li><a href="#">實況資訊</a></li>
+         <li><a href="#">聯絡我</a></li>
+       </ul>
+      </nav>
+    </header>
+   
+   <main>
+    <section class="關於我">
+    <h2>關於我</h2>
+    <p><strong>本名于德銘，29歲，畢業於復興商工廣告設計科。</strong></p>
+    <p><a href="https://pda.104.com.tw/profile/preview?vno=75548h8e3" target="_blank">瞭解更多</a></p>
+    </section>
+    
+    <section class="左右銘">
+    <blockquote>"行無定處，心有歸途。"
+    </blockquote>
+    </section>
+    
+    
+    <section class="產品圖片">
+        <div><a href="https://soundcloud.com/mmarkyquik" target="_blank"><img src="./image/大安路2020我的工作桌.jpg" alt="音樂作品"></a>
+        <h3>音樂作品</h3>
+        </div>
+        
+        <div><a href="https://www.twitch.tv/markyutw" target="_blank"><img src="./image/RWVH9822.PNG" alt="電玩實況"></a>
+        <h3>電玩實況</h3>
+        </div>
+        
+        <div><a href="https://www.instagram.com/animetalocation/" target="_blank"><img src="./image/鳴人擺拍.jpg" alt="停格動畫"></a>
+        <h3>停格動畫</h3>
+        </div>
+    </section>
+
+    
+    <section class="定期開台公告區域">
+        <img src="./image/陳珮安信義區的家.jpg" alt="">
+
+      <div class="文字資訊">
+        <h2>每周日00:00準時開台!</h2>
+        <p>單機劇情、連線合作我都玩，臨時揪團也來! <br> Discord 頻道開放中，歡迎進來認識一下</p>
+      </div>  
+    </section>
+
+    <section class="email聯絡我">
+        <p>聯絡我</p>
+        <form>
+            <input type="email" placeholder="請輸入你的Email" required>
+            <button type="submit">送出</button>
+        </form>
+
+    </section>
+
+    </main>
+
+    <section class="footer">
+        <footer>
+            Copyright © 2018 MarkyQuikkk All Rights Reserved.
+        </footer> 
+    </section>
+
+<!-- 音樂播放 -->
+<audio id="bgm" src="./music/emo_meta_22_l.wav" preload="auto" loop muted></audio>
+
+<!-- 備用啟動鈕（若已成功播放會自動移除） -->
+<button id="bgm-btn" style="
+  position:fixed; right:16px; bottom:16px; z-index:9999;
+  padding:10px 14px; border-radius:999px; border:1px solid #999;
+  background:#222; color:#fff; cursor:pointer;">🎵 開啟音樂</button>
+
+<script>
+(function () {
+  const bgm = document.getElementById('bgm');
+  const btn = document.getElementById('bgm-btn');
+
+  // 淡入音量（想關掉就刪掉這個函式的呼叫）
+  function fadeIn() {
+    try { bgm.volume = 0; } catch(e) {}
+    const step = 0.08;
+    const iv = setInterval(() => {
+      try { bgm.volume = Math.min(1, (bgm.volume || 0) + step); } catch(e) {}
+      if ((bgm.volume || 0) >= 1) clearInterval(iv);
+    }, 120);
+  }
+
+  function tryStart() {
+    // 先以 muted 播放（各瀏覽器允許）
+    bgm.play().then(() => {
+      bgm.muted = false;   // 有互動後立刻解除靜音
+      fadeIn();            // 可選：淡入音量
+      cleanup();
+    }).catch((err) => {
+      // 若仍被擋，保留按鈕讓使用者點
+      console.warn('自動播放仍被擋，等待手動觸發', err);
+    });
+  }
+
+  function manualStart() {
+    tryStart();
+  }
+
+  function cleanup() {
+    ['pointerdown','click','keydown','touchstart','wheel','scroll'].forEach(ev =>
+      window.removeEventListener(ev, tryStart)
+    );
+    if (btn) btn.remove();
+  }
+
+  // 監聽多種有效互動（scroll 常常不算，故加上其他事件）
+  ['pointerdown','click','keydown','touchstart','wheel','scroll'].forEach(ev =>
+    window.addEventListener(ev, tryStart, { once: true })
+  );
+
+  // 備用按鈕
+  btn.addEventListener('click', manualStart);
+})();
+</script>
+
+
+</body>
+</html>
